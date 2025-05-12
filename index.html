@@ -19,7 +19,7 @@
       position: fixed;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      z-index: -1; /* Ensure particles stay behind all content */
       background-color: #000;
     }
 
@@ -29,6 +29,7 @@
       align-items: center;
       padding: 50px 20px;
       animation: fadeInBody 1s ease-in-out;
+      position: relative; /* Allows the content to be layered above particles */
     }
 
     .profile-img {
@@ -38,6 +39,7 @@
       object-fit: cover;
       border: 3px solid #fff;
       animation: slideUp 1s ease-in-out forwards;
+      position: relative; /* Makes sure the profile image stays on top */
     }
 
     .username {
@@ -45,6 +47,7 @@
       margin: 20px 0;
       opacity: 0;
       animation: slideUp 1s ease-in-out 0.5s forwards;
+      position: relative; /* Makes sure the username stays on top */
     }
 
     .music-player {
@@ -54,12 +57,14 @@
       transform: scale(0.8);
       opacity: 0;
       animation: zoomIn 1s ease-in-out 1s forwards;
+      position: relative; /* Makes sure the music player stays on top */
     }
 
     .discord-widget {
       margin-top: 30px;
       opacity: 0;
       animation: fadeIn 1s ease-in-out 1.5s forwards;
+      position: relative; /* Makes sure the discord widget stays on top */
     }
 
     @keyframes fadeInBody {
