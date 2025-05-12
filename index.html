@@ -117,7 +117,7 @@
     particlesJS("particles-js", {
       particles: {
         number: {
-          value: 60,
+          value: 60, // number of particles
           density: { enable: true, value_area: 800 }
         },
         color: { value: "#ffffff" },
@@ -128,12 +128,12 @@
         opacity: {
           value: 0.5,
           random: false,
-          anim: { enable: false }  // prevents fade out
+          anim: { enable: false }  // particles will not fade out
         },
         size: {
           value: 3,
           random: true,
-          anim: { enable: false }
+          anim: { enable: false }  // particles won't resize
         },
         line_linked: {
           enable: true,
@@ -144,9 +144,9 @@
         },
         move: {
           enable: true,
-          speed: 1,
+          speed: 1, // particle movement speed
           direction: "none",
-          out_mode: "bounce",  // keeps particles inside the canvas
+          out_mode: "bounce",  // particles will bounce back if they reach the edges
           straight: false
         }
       },
