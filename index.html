@@ -14,21 +14,14 @@
       background: linear-gradient(to bottom, #000000, #808080); /* Black to Grey Gradient */
     }
 
-    /* First layer: Static background particles */
-    #background-particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -2; /* Set this to be behind everything */
-      background-color: transparent;
-    }
-
-    /* Second layer: Dynamic particles (foreground) */
+    /* Background layer for particles */
     #particles-js {
-      position: absolute;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1; /* Stay in the background but above static particles */
+      z-index: -1; /* Ensure it stays in the background */
       background-color: transparent;
     }
 
@@ -111,10 +104,7 @@
 </head>
 <body>
 
-  <!-- Static Particle Background (Layer 1) -->
-  <div id="background-particles"></div>
-
-  <!-- Dynamic Particle Background (Layer 2) -->
+  <!-- Dynamic Particle Background (Layer) -->
   <div id="particles-js"></div>
 
   <!-- Profile Image -->
@@ -143,45 +133,12 @@
   <!-- Particles.js Script -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // First particle layer (Static background)
-    particlesJS("background-particles", {
-      particles: {
-        number: {
-          value: 100,
-          density: { enable: true, value_area: 1000 }
-        },
-        color: { value: "#ffffff" },
-        shape: {
-          type: "circle",
-          stroke: { width: 0, color: "#000000" }
-        },
-        opacity: {
-          value: 0.2,
-          random: false,
-          anim: { enable: false }
-        },
-        size: {
-          value: 5,
-          random: true,
-          anim: { enable: false }
-        },
-        move: {
-          enable: true,
-          speed: 0.2, // Slow static particles
-          direction: "none",
-          out_mode: "bounce", 
-          straight: false
-        }
-      },
-      retina_detect: true
-    });
-
-    // Second particle layer (Dynamic moving particles)
+    // Particle configuration
     particlesJS("particles-js", {
       particles: {
         number: {
-          value: 60, // number of particles
-          density: { enable: true, value_area: 800 }
+          value: 100, // Number of particles
+          density: { enable: true, value_area: 1000 }
         },
         color: { value: "#ffffff" },
         shape: {
@@ -191,12 +148,19 @@
         opacity: {
           value: 0.5,
           random: false,
-          anim: { enable: false }
+          anim: { enable: true, speed: 1, opacity_min: 0.1 }
         },
         size: {
-          value: 3,
+          value: 5,
           random: true,
-          anim: { enable: false }
+          anim: { enable: true, speed: 2, size_min: 0.1 }
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          out_mode: "out",  // Ensure particles exit out of the screen when moving out of bounds
+          straight: false
         },
         line_linked: {
           enable: true,
@@ -204,13 +168,6 @@
           color: "#ffffff",
           opacity: 0.4,
           width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1, // particle movement speed
-          direction: "none",
-          out_mode: "bounce",  // particles will bounce back if they reach the edges
-          straight: false
         }
       },
       interactivity: {
